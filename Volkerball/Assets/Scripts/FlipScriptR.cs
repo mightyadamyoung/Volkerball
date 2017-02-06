@@ -12,13 +12,14 @@ public class FlipScriptR : MonoBehaviour
     {
         wheelJoints = gameObject.GetComponent<WheelJoint2D>();
         jointMotor = wheelJoints.motor;
+        jointMotor.motorSpeed = 0;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            jointMotor.motorSpeed = -10000;
+            jointMotor.motorSpeed = -100000;
         }
         else
         {

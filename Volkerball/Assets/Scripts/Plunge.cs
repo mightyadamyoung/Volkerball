@@ -4,30 +4,26 @@ using UnityEngine;
 
 public class Plunge : MonoBehaviour
 {
-    public GameObject plunger;
-    public int n = 0;
-    public Transform position;
-    Vector2 start;
+    public float speed = 10.0f;
     Vector2 current;
-    void Start()
+    public GameObject plunger;
+    Vector2 starting;
+    void start()
     {
         plunger = gameObject.GetComponent<GameObject>();
-        position = gameObject.transform;
-        start = position.transform.position;
-        current = start;
+        current = plunger.transform.position;
+        starting = current;
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.DownArrow))
+        Move();
+    }
+    void Move()
+    {
+        if (Input.GetKey(KeyCode.Space))
         {
-            for (int i = 46; i > n; i--)
-            {
-                current.y --;
-            }
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
         }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            gameObject.transform.position = start;
-        }
+        
     }
 }

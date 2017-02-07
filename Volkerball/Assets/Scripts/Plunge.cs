@@ -3,26 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Plunge : MonoBehaviour {
+    const float maxDistance = 1f;
+    const float pullSpeed = 0.5f;
+    const float resetSpeed = 10f;
     private Rigidbody2D body;
-    public static float distanceTraveled;
-    // Use this for initialization
-    void Start ()
+    private SpringJoint2D spring;
+    public float max = 2200;
+    public Transform distance;
+    public GameObject ball;
+    Vector2 start;
+    Vector2 ballStart;
+    void Start()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
+        distance = body.transform;
+        start = distance.transform.position;
+        ballStart = ball.transform.position;
     }
-	
-	// Update is called once per frame
 	void FixedUpdate ()
     {
-        transform.Translate(5f * Time.deltaTime, 0f, 0f);
-        distanceTraveled = transform.localPosition.x;
-       // if (Input.GetKeyDown(KeyCode.DownArrow) && this.canJump == true)
-        //{
-         //   Vector2 vec = new Vector2(12f, jump);
-           // body.AddForce(vec * 10);
-          //  spriteRenderer.sprite = jumps;
-            //playerJump.Play();
-            //canJump = false;
-        //}
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Vector2 moveAmount = new Vector2(0f,-pullSpeed * Time.deltaTime);
+            distance.transform.Translate(moveAmount);
+            ball.transform.Translate(moveAmount);
+
+        }
+        if(Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            if (Mathf.Abs(transform.position.y) - Mathf.Abs(ball.transform.position.y) < 1f)
+            {
+                float distance = Mathf.Abs(body.transform.position.y - start.y);
+            }
+        }
     }
 }

@@ -7,17 +7,17 @@ public class FlipScript : MonoBehaviour
 {
     WheelJoint2D wheelJoints;
     JointMotor2D jointMotor;
-    //public Transform start;
-    //Vector2 begin;
+    public Transform start;
+    Vector2 begin;
 
     void Start()
     {
         wheelJoints = gameObject.GetComponent<WheelJoint2D>();
-        //start = gameObject.transform;
-       // begin = start.position;
+        start = gameObject.transform;
+        begin = start.position;
         jointMotor = wheelJoints.motor;
         jointMotor.motorSpeed = 0;
-        //jointMotor.maxMotorTorque = 0;
+        jointMotor.maxMotorTorque = 0;
     }
 
     void FixedUpdate()
@@ -29,7 +29,7 @@ public class FlipScript : MonoBehaviour
         }
         else
         {
-           // gameObject.transform.position = begin;
+            gameObject.transform.position = begin;
             jointMotor.motorSpeed = -100000;
         }
         wheelJoints.motor = jointMotor;

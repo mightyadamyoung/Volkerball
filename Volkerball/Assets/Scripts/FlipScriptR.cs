@@ -24,13 +24,13 @@ public class FlipScriptR : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            jointMotor.motorSpeed = -100000;
+            jointMotor.motorSpeed = -1000;
             jointMotor.maxMotorTorque = 100000;
         }
         else
         {
           // gameObject.transform.position = begin;
-            jointMotor.motorSpeed = 100000;
+            jointMotor.motorSpeed = 1000;
         }
         wheelJoints.motor = jointMotor;
     }

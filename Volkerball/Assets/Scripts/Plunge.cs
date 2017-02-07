@@ -2,39 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plunge : MonoBehaviour {
-    const float maxDistance = 1f;
-    const float pullSpeed = 0.5f;
-    const float resetSpeed = 10f;
-    private Rigidbody2D body;
-    private SpringJoint2D spring;
-    public float max = 2200;
-    public Transform distance;
-    public GameObject ball;
+public class Plunge : MonoBehaviour
+{
+    public GameObject plunger;
+    public int n = 0;
+    public Transform position;
     Vector2 start;
-    Vector2 ballStart;
+    Vector2 current;
     void Start()
     {
-        body = gameObject.GetComponent<Rigidbody2D>();
-        distance = body.transform;
-        start = distance.transform.position;
-        ballStart = ball.transform.position;
+        plunger = gameObject.GetComponent<GameObject>();
+        position = gameObject.transform;
+        start = position.transform.position;
+        current = start;
     }
-	void FixedUpdate ()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            Vector2 moveAmount = new Vector2(0f,-pullSpeed * Time.deltaTime);
-            distance.transform.Translate(moveAmount);
-            ball.transform.Translate(moveAmount);
-
-        }
-        if(Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            if (Mathf.Abs(transform.position.y) - Mathf.Abs(ball.transform.position.y) < 1f)
+            for (int i = 46; i > n; i--)
             {
-                float distance = Mathf.Abs(body.transform.position.y - start.y);
+                current.y --;
             }
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            gameObject.transform.position = start;
         }
     }
 }

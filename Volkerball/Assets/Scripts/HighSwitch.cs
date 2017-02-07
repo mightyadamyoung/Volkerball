@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HighSwitch : MonoBehaviour {
+public class HighSwitch : MonoBehaviour
+{
 
     public Button playB;
     public Button highB;
     public Button exitB;
-    void Start () {
+    void Start ()
+    {
         Button ply = playB.GetComponent<Button>();
         ply.onClick.AddListener(TaskOnClick);
 

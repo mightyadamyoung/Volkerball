@@ -698,8 +698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playB: {fileID: 1094991240}
-  menuB: {fileID: 1012631119}
-  exitB: {fileID: 330884673}
+  menuB: {fileID: 330884673}
+  exitB: {fileID: 1012631119}
 --- !u!1 &1332881683
 GameObject:
   m_ObjectHideFlags: 0
